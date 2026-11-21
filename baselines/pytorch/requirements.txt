@@ -1,0 +1,6 @@
+# PyTorch is installed separately to match the server's CUDA Toolkit.
+numpy==1.26.4
+Pillow>=10,<14
+setuptools>=68,<85
+wheel>=0.41,<0.49
+ninja>=1.11,<2
