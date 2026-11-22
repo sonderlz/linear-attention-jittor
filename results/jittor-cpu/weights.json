@@ -1,0 +1,43 @@
+{
+  "environment": {
+    "device": "cpu",
+    "dtype": "float32",
+    "jittor": "1.3.11.0",
+    "python": "3.12.3",
+    "cpu": "Intel(R) Core(TM) Ultra X7 358H",
+    "os": "Linux",
+    "omp_threads": "2",
+    "use_mkl": "0"
+  },
+  "torch": "2.7.1+cpu",
+  "images": "MNIST test[0:4]",
+  "targets_per_image": 783,
+  "targets": 3132,
+  "recurrent_positions": 17,
+  "cases": [
+    {
+      "kind": "full",
+      "sha256": "17c7944afb0b818a4375779274459eb5078cfaff5ab5b4dd2b5b40acd0a2c12e",
+      "state_entries": 134,
+      "logit_max_abs": 3.2782554626464844e-05,
+      "recurrent_window_start": 202,
+      "recurrent_logit_max_abs": 5.7220458984375e-06,
+      "nll_max_abs": 0.0002589225769042969,
+      "nll_same_logits_max_abs": 0.0001723766326904297,
+      "torch_bpd": 0.49331966494626034,
+      "jittor_bpd": 0.49332014523025297
+    },
+    {
+      "kind": "causal-linear",
+      "sha256": "a2e915d5200e4d51fc636210a9d9a5cfa8d069d3d9f0a4af5da3cb2ea83a1d1b",
+      "state_entries": 134,
+      "logit_max_abs": 0.00011730194091796875,
+      "recurrent_window_start": 202,
+      "recurrent_logit_max_abs": 7.62939453125e-06,
+      "nll_max_abs": 0.0006465911865234375,
+      "nll_same_logits_max_abs": 0.0001888275146484375,
+      "torch_bpd": 0.532264766243663,
+      "jittor_bpd": 0.532264181659168
+    }
+  ]
+}

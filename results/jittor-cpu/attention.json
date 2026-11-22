@@ -1,0 +1,66 @@
+{
+  "environment": {
+    "device": "cpu",
+    "dtype": "float32",
+    "jittor": "1.3.11.0",
+    "python": "3.12.3",
+    "cpu": "Intel(R) Core(TM) Ultra X7 358H",
+    "os": "Linux",
+    "omp_threads": "2",
+    "use_mkl": "0"
+  },
+  "torch": "2.7.1+cpu",
+  "seed": 1229,
+  "batch": 2,
+  "heads": 2,
+  "key_dim": 4,
+  "value_dim": 3,
+  "cases": [
+    {
+      "kind": "full",
+      "length": 1,
+      "max_abs": {
+        "output": 2.384185791015625e-07,
+        "dQ": 0.0,
+        "dK": 0.0,
+        "dV": 1.1920928955078125e-07,
+        "recurrent": 0.0
+      }
+    },
+    {
+      "kind": "full",
+      "length": 17,
+      "max_abs": {
+        "output": 1.7881393432617188e-07,
+        "dQ": 2.384185791015625e-07,
+        "dK": 1.7881393432617188e-07,
+        "dV": 4.76837158203125e-07,
+        "recurrent": 2.086162567138672e-07,
+        "future_leak": 0.0
+      }
+    },
+    {
+      "kind": "causal-linear",
+      "length": 1,
+      "max_abs": {
+        "output": 5.960464477539063e-08,
+        "dQ": 1.0481992518407424e-07,
+        "dK": 4.865471936454924e-08,
+        "dV": 1.1920928955078125e-07,
+        "recurrent": 1.1920928955078125e-07
+      }
+    },
+    {
+      "kind": "causal-linear",
+      "length": 17,
+      "max_abs": {
+        "output": 1.1920928955078125e-07,
+        "dQ": 1.371883797673945e-07,
+        "dK": 1.043081283569336e-07,
+        "dV": 4.76837158203125e-07,
+        "recurrent": 1.1920928955078125e-07,
+        "future_leak": 0.0
+      }
+    }
+  ]
+}

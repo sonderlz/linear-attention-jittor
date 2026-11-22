@@ -1,15 +1,19 @@
 # 用 Jittor 复现因果线性注意力
 
-当生成一张图需要逐个预测 784 个像素时，模型如何利用已经生成的前缀？本项目复现 ICML 2020 论文 *Transformers are RNNs*。我们将实现两种自回归模型，比较 Softmax 注意力与维护固定大小状态的因果线性注意力在生成质量、耗时和显存上的差异。[论文](https://proceedings.mlr.press/v119/katharopoulos20a.html) · [作者实现](https://github.com/idiap/fast-transformers)
+当生成一张图需要逐个预测 784 个像素时，模型如何利用已经生成的前缀？本项目复现 ICML 2020 论文 *Transformers are RNNs*，用 Jittor 比较 Softmax 注意力与维护固定大小状态的因果线性注意力在生成质量、耗时和显存上的差异。[论文](https://proceedings.mlr.press/v119/katharopoulos20a.html) · [作者实现](https://github.com/idiap/fast-transformers)
 
 | 实验 | 目标与进度 |
 | --- | --- |
 | PyTorch 实验基线 | 已完成。复评作者权重，训练两组 MNIST 模型，测量逐像素生成吞吐和注意力的长度曲线。 |
-| Jittor 主复现 | 计划实现因果线性注意力、递推推理及 Softmax 对照。Figure 1 比较长度 512–65,536 的前后向耗时和显存。Table 1 比较 MNIST 的 bits/dim 和图/秒，两个模型使用相同训练预算。 |
-| 两项额外工作 | 在 CIFAR-10 上以相同训练时长比较生成质量；在同一张卡上对比 Jittor/PyTorch 的性能，定位瓶颈并验证优化效果。 |
+| Jittor 主复现 | 两种注意力、递推生成、MNIST 小模型训练和作者权重对齐已在 CPU 上通过。获卡后复现 Figure 1 的长序列耗时与显存，以及 Table 1 的质量和生成吞吐。 |
+| 两项额外工作 | CIFAR-10 已通过真实图像的编码与训练小跑。获卡后按相同训练时长比较生成质量，并在同一张卡上对照 Jittor/PyTorch 的性能、定位瓶颈和验证优化效果。 |
 | 后续拓展 | 在上述实验完成后，研究有限显存下的前缀状态检查点选择，用实测的存取和恢复耗时修正成本估计。 |
 
-## 从基线开始
+## Jittor CPU 结果
+
+用作者发布的两份 8 层权重逐位置核对 MNIST 测试集前 4 张图，共 3,132 个预测目标。Softmax 和 Causal Linear 的 Jittor 平均 bits/dim 分别与作者 PyTorch 实现相差 4.80 × 10⁻⁷ 和 5.85 × 10⁻⁷。独立算子检查覆盖前向、Q/K/V 梯度、因果掩码与递推状态。两种注意力在 MNIST、CIFAR-10 上均已跑通短前缀训练、评估和恢复。[CPU 实验报告、原始结果与复跑命令](results/jittor-cpu/README.md)
+
+## PyTorch 基线
 
 [基线运行说明](baselines/pytorch/README.md)提供从安装、数据准备到训练、评估及测速的命令。只想看结果时，可直接打开[逐轮质量](results/mnist-a30/quality.json)、[逐次生成计时](results/mnist-a30/generation.json)和[长度扫描](results/mnist-a30/attention-scaling.json)。
 
@@ -28,6 +32,8 @@
 ## 目录
 
 - `baselines/pytorch/` 存放已运行的对照程序，作者模型和算子从固定来源获取。本组代码负责离散似然损失、实验入口与计时。
-- `results/mnist-a30/` 保存上述 PyTorch 实验的可复核数据。Jittor 实现落地时放入 `src/`，数值对齐用例放入 `tests/`，跨框架实验入口放入 `benchmarks/`。
+- `src/` 包含 Jittor 模型、图像数据接口、RAdam 优化器及训练入口 `python -m src.train`。
+- `tests/` 包含算子、真实数据训练与作者权重的数值验证。`benchmarks/` 包含分进程的注意力前后向长度扫描。
+- `results/` 保存 [PyTorch A30 基线](results/mnist-a30/)与 [Jittor CPU 实测](results/jittor-cpu/)。
 
 本组代码使用 [MIT 许可证](LICENSE)。作者库沿用其[上游许可证](https://github.com/idiap/fast-transformers/blob/2ad36b97e64cb93862937bd21fcc9568d989561f/LICENSE)，作者 notebook、权重与数据分别由原发布方提供。

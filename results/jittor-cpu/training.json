@@ -1,0 +1,128 @@
+{
+  "environment": {
+    "device": "cpu",
+    "dtype": "float32",
+    "jittor": "1.3.11.0",
+    "python": "3.12.3",
+    "cpu": "Intel(R) Core(TM) Ultra X7 358H",
+    "os": "Linux",
+    "omp_threads": "2",
+    "use_mkl": "0"
+  },
+  "seed": 1229,
+  "cases": [
+    {
+      "dataset": "mnist",
+      "kind": "full",
+      "tokens_per_image": 784,
+      "train_images": 2,
+      "test_images": 2,
+      "targets_per_image": 192,
+      "eval_targets": 384,
+      "updates": 2,
+      "train_nll": [
+        2.0710437297821045,
+        2.0705840587615967
+      ],
+      "predictor_weight_delta_after_one": 3.793835639953613e-05,
+      "test_prefix_bpd": 2.7262388925750285,
+      "replay_max_abs_parameter_error": 0.0,
+      "generated": [
+        255,
+        45,
+        0,
+        255,
+        198,
+        98,
+        255,
+        255
+      ]
+    },
+    {
+      "dataset": "mnist",
+      "kind": "causal-linear",
+      "tokens_per_image": 784,
+      "train_images": 2,
+      "test_images": 2,
+      "targets_per_image": 192,
+      "eval_targets": 384,
+      "updates": 2,
+      "train_nll": [
+        2.0720086097717285,
+        2.071547746658325
+      ],
+      "predictor_weight_delta_after_one": 3.7923455238342285e-05,
+      "test_prefix_bpd": 2.7276756320573643,
+      "replay_max_abs_parameter_error": 0.0,
+      "generated": [
+        255,
+        45,
+        0,
+        255,
+        198,
+        96,
+        255,
+        255
+      ]
+    },
+    {
+      "dataset": "cifar10",
+      "kind": "full",
+      "tokens_per_image": 3072,
+      "train_images": 2,
+      "test_images": 2,
+      "targets_per_image": 192,
+      "eval_targets": 384,
+      "updates": 2,
+      "train_nll": [
+        6.265689373016357,
+        6.265615940093994
+      ],
+      "predictor_weight_delta_after_one": 1.0460615158081055e-05,
+      "test_prefix_bpd": 9.247112042582582,
+      "replay_max_abs_parameter_error": 0.0,
+      "generated": [
+        255,
+        71,
+        0,
+        255,
+        193,
+        174,
+        255,
+        255
+      ]
+    },
+    {
+      "dataset": "cifar10",
+      "kind": "causal-linear",
+      "tokens_per_image": 3072,
+      "train_images": 2,
+      "test_images": 2,
+      "targets_per_image": 192,
+      "eval_targets": 384,
+      "updates": 2,
+      "train_nll": [
+        6.26649284362793,
+        6.266422748565674
+      ],
+      "predictor_weight_delta_after_one": 1.0266900062561035e-05,
+      "test_prefix_bpd": 9.243937282260346,
+      "replay_max_abs_parameter_error": 0.0,
+      "generated": [
+        255,
+        71,
+        0,
+        255,
+        193,
+        173,
+        255,
+        255
+      ]
+    }
+  ],
+  "radam_8_step_max_abs": 0.0,
+  "mol_max_abs": {
+    "nll": 9.848590352135034e-07,
+    "gradient": 4.606892071157276e-07
+  }
+}
