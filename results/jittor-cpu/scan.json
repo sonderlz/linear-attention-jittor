@@ -1,0 +1,172 @@
+{
+  "batch": 2,
+  "heads": 2,
+  "dim": 8,
+  "seed": 1229,
+  "warmup_after_first": 3,
+  "repeats": 7,
+  "cases": [
+    {
+      "kind": "full",
+      "length": 16,
+      "status": "ok",
+      "environment": {
+        "device": "cpu",
+        "dtype": "float32",
+        "jittor": "1.3.11.0",
+        "python": "3.12.3",
+        "cpu": "Intel(R) Core(TM) Ultra X7 358H",
+        "os": "Linux",
+        "omp_threads": "2",
+        "use_mkl": "0"
+      },
+      "first_call_ms": 1317.5426490000177,
+      "trials_ms": [
+        0.15584100000864964,
+        0.13298599998279315,
+        0.14110800000821655,
+        0.11927200000627636,
+        0.10884099998520469,
+        0.12050300000510106,
+        0.10926999999583131
+      ],
+      "median_ms_per_batch": 0.12050300000510106,
+      "gpu_peak_bytes": null
+    },
+    {
+      "kind": "causal-linear",
+      "length": 16,
+      "status": "ok",
+      "environment": {
+        "device": "cpu",
+        "dtype": "float32",
+        "jittor": "1.3.11.0",
+        "python": "3.12.3",
+        "cpu": "Intel(R) Core(TM) Ultra X7 358H",
+        "os": "Linux",
+        "omp_threads": "2",
+        "use_mkl": "0"
+      },
+      "first_call_ms": 1316.327814999994,
+      "trials_ms": [
+        0.1417229999844949,
+        0.1407400000061898,
+        0.16020000001049084,
+        0.14441899998018926,
+        0.15275500001621367,
+        0.14080099998636797,
+        0.13607599998977093
+      ],
+      "median_ms_per_batch": 0.1417229999844949,
+      "gpu_peak_bytes": null
+    },
+    {
+      "kind": "full",
+      "length": 32,
+      "status": "ok",
+      "environment": {
+        "device": "cpu",
+        "dtype": "float32",
+        "jittor": "1.3.11.0",
+        "python": "3.12.3",
+        "cpu": "Intel(R) Core(TM) Ultra X7 358H",
+        "os": "Linux",
+        "omp_threads": "2",
+        "use_mkl": "0"
+      },
+      "first_call_ms": 23.388250000010657,
+      "trials_ms": [
+        0.17937099997311634,
+        0.17089899998268265,
+        0.16839500000287444,
+        0.18489499998963765,
+        0.16582200001380443,
+        0.16000300001905998,
+        0.1576540000201021
+      ],
+      "median_ms_per_batch": 0.16839500000287444,
+      "gpu_peak_bytes": null
+    },
+    {
+      "kind": "causal-linear",
+      "length": 32,
+      "status": "ok",
+      "environment": {
+        "device": "cpu",
+        "dtype": "float32",
+        "jittor": "1.3.11.0",
+        "python": "3.12.3",
+        "cpu": "Intel(R) Core(TM) Ultra X7 358H",
+        "os": "Linux",
+        "omp_threads": "2",
+        "use_mkl": "0"
+      },
+      "first_call_ms": 22.275957000005064,
+      "trials_ms": [
+        0.16199800001004405,
+        0.15496200001052785,
+        0.16318400000159272,
+        0.15175599997974132,
+        0.16491900001369686,
+        0.1465029999963008,
+        0.19592999998963023
+      ],
+      "median_ms_per_batch": 0.16199800001004405,
+      "gpu_peak_bytes": null
+    },
+    {
+      "kind": "full",
+      "length": 64,
+      "status": "ok",
+      "environment": {
+        "device": "cpu",
+        "dtype": "float32",
+        "jittor": "1.3.11.0",
+        "python": "3.12.3",
+        "cpu": "Intel(R) Core(TM) Ultra X7 358H",
+        "os": "Linux",
+        "omp_threads": "2",
+        "use_mkl": "0"
+      },
+      "first_call_ms": 23.022061000006033,
+      "trials_ms": [
+        0.4373320000183867,
+        0.4567900000154168,
+        0.4244069999970179,
+        0.5438299999980245,
+        0.4366410000216092,
+        0.42027099999586426,
+        0.4132210000022951
+      ],
+      "median_ms_per_batch": 0.4366410000216092,
+      "gpu_peak_bytes": null
+    },
+    {
+      "kind": "causal-linear",
+      "length": 64,
+      "status": "ok",
+      "environment": {
+        "device": "cpu",
+        "dtype": "float32",
+        "jittor": "1.3.11.0",
+        "python": "3.12.3",
+        "cpu": "Intel(R) Core(TM) Ultra X7 358H",
+        "os": "Linux",
+        "omp_threads": "2",
+        "use_mkl": "0"
+      },
+      "first_call_ms": 23.021077000009882,
+      "trials_ms": [
+        0.22631999999589425,
+        0.2246159999970132,
+        0.26999499999647014,
+        0.23261900000193236,
+        0.21207899999353685,
+        0.21924000000694832,
+        0.21144900000535927
+      ],
+      "median_ms_per_batch": 0.2246159999970132,
+      "gpu_peak_bytes": null
+    }
+  ]
+}
